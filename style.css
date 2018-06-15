@@ -1,0 +1,39 @@
+body {
+    background: rgb(0, 0, 0);
+}
+
+body {
+    color: white;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.island {
+    width: 600px !important;
+    box-sizing: border-box !important;
+    padding: 0px !important;
+}
+
+.ui.grid.island .row {
+    padding: 0px;
+}
+
+.ui.grid.island .card {
+    background-color: #FCFCFC;
+    height: 100%;
+    color: #1F1F1F;
+    height: 200px;
+    width: 200px;
+    padding: 0px;
+    transition: all 1s;
+}
+
+.ui.grid.island .card:hover {
+    background-color: #FB0335;
+    cursor: pointer;
+}
