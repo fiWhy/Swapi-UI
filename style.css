@@ -14,26 +14,126 @@ body {
 }
 
 .island {
-    width: 600px !important;
     box-sizing: border-box !important;
     padding: 0px !important;
+    width: 600px;
 }
 
 .ui.grid.island .row {
     padding: 0px;
+    position: relative;
+    height: 200px;
+    width: 600px;
 }
 
-.ui.grid.island .card {
+.ui.grid.island .row .card.column {
     background-color: #FCFCFC;
     height: 100%;
     color: #1F1F1F;
     height: 200px;
-    width: 200px;
+    width: 200px !important;
     padding: 0px;
-    transition: all 1s;
+    transition: box-shadow 1s, width 0.5s, height 0.5s, left 0.5s, top 0.5s;
+    z-index: 1;
+    position: absolute;
 }
 
-.ui.grid.island .card:hover {
+.ui.grid.island .row .card:hover {
     background-color: #FB0335;
     cursor: pointer;
+    width: 250px !important;
+    height: 250px;
+    top: -10%;
+    left: -10%;
 }
+
+.ui.grid.island .row .card:hover {
+    -webkit-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
+    z-index: 2;
+}
+
+.ui.grid.island .row .card:first-child {
+    left: 0;
+    top: 0;
+}
+
+.ui.grid.island .row .card:nth-child(2) {
+    left: 200px;
+    top: 0;
+}
+
+.ui.grid.island .row .card:last-child {
+    left: 400px;
+    top: 0;
+}
+
+/**
+First row
+*/
+
+.ui.grid.island .row:first-child .card:first-child:hover {
+    left: -50px;
+    top: -50px;
+}
+
+.ui.grid.island .row:first-child .card:nth-child(2):hover {
+    left: 175px;
+    top: -50px;
+}
+
+.ui.grid.island .row:first-child .card:last-child:hover {
+    left: 400px;
+    top: -50px;
+}
+
+/*
+End first row
+*/
+
+/**
+Second row
+*/
+
+.ui.grid.island .row:nth-child(2) .card:first-child:hover {
+    left: -50px;
+    top: -25px;
+}
+
+.ui.grid.island .row:nth-child(2) .card:nth-child(2):hover {
+    left: 175px;
+    top: -25px;
+}
+
+.ui.grid.island .row:nth-child(2) .card:last-child:hover {
+    left: 400px;
+    top: -25px;
+}
+
+/*
+End second row
+*/
+
+/**
+Third row
+*/
+
+.ui.grid.island .row:last-child .card:first-child:hover {
+    left: -25px;
+    top: 0px;
+}
+
+.ui.grid.island .row:last-child .card:nth-child(2):hover {
+    left: 175px;
+    top: 0px;
+}
+
+.ui.grid.island .row:last-child .card:last-child:hover {
+    left: 400px;
+    top: 0px;
+}
+
+/*
+End third row
+*/
