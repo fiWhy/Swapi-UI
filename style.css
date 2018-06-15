@@ -19,14 +19,14 @@ body {
     width: 600px;
 }
 
-.ui.grid.island .row {
+.ui.grid.island>.row {
     padding: 0px;
     position: relative;
     height: 200px;
     width: 600px;
 }
 
-.ui.grid.island .row .card.column {
+.ui.grid.island>.row .card.column {
     background-color: #FCFCFC;
     height: 100%;
     color: #1F1F1F;
@@ -36,10 +36,27 @@ body {
     transition: box-shadow 1s, width 0.5s, height 0.5s, left 0.5s, top 0.5s;
     z-index: 1;
     position: absolute;
+    display: none;
 }
 
-.ui.grid.island .row .card:hover {
-    background-color: #FB0335;
+.ui.grid.island.chosen>.row .card.column {
+    display: flex;
+}
+
+.ui.grid.island>.row:nth-child(2) .card.column:nth-child(2) {
+    display: flex;
+}
+
+.ui.grid.island>.row:nth-child(2n) .card.column:nth-child(2) {
+    background-color: #F3F2F8;
+}
+
+.ui.grid.island>.row:nth-child(2n+1) .card.column:nth-child(2n+1) {
+    background-color: #F3F2F8;
+}
+
+.ui.grid.island>.row .card:hover,
+.ui.grid.island>.row .card.active {
     cursor: pointer;
     width: 250px !important;
     height: 250px;
@@ -47,93 +64,47 @@ body {
     left: -10%;
 }
 
-.ui.grid.island .row .card:hover {
+.ui.grid.island>.row .card .hidden {
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    transition: top 0.5s;
+    visibility: hidden;
+}
+
+.ui.grid.island>.row .card .hidden input {
+    border: none;
+}
+
+.ui.grid.island>.row .card:hover .hidden,
+.ui.grid.island>.row .card.active .hidden {
+    top: -40px;
+    visibility: visible;
+}
+
+.ui.grid.island>.row .card .card-wrapper,
+.ui.grid.island>.row .card .card-wrapper .card-inner {
+    height: 100%;
+}
+
+.ui.grid.island>.row .card:hover .card-wrapper,
+.ui.grid.island>.row .card.active .card-wrapper {
+    background-color: #FB0335 !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.ui.grid.island>.row .card:hover,
+.ui.grid.island>.row .card.active {
     -webkit-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     z-index: 2;
+    border: 1px solid #7f7f7f;
 }
-
-.ui.grid.island .row .card:first-child {
-    left: 0;
-    top: 0;
-}
-
-.ui.grid.island .row .card:nth-child(2) {
-    left: 200px;
-    top: 0;
-}
-
-.ui.grid.island .row .card:last-child {
-    left: 400px;
-    top: 0;
-}
-
-/**
-First row
-*/
-
-.ui.grid.island .row:first-child .card:first-child:hover {
-    left: -50px;
-    top: -50px;
-}
-
-.ui.grid.island .row:first-child .card:nth-child(2):hover {
-    left: 175px;
-    top: -50px;
-}
-
-.ui.grid.island .row:first-child .card:last-child:hover {
-    left: 400px;
-    top: -50px;
-}
-
-/*
-End first row
-*/
-
-/**
-Second row
-*/
-
-.ui.grid.island .row:nth-child(2) .card:first-child:hover {
-    left: -50px;
-    top: -25px;
-}
-
-.ui.grid.island .row:nth-child(2) .card:nth-child(2):hover {
-    left: 175px;
-    top: -25px;
-}
-
-.ui.grid.island .row:nth-child(2) .card:last-child:hover {
-    left: 400px;
-    top: -25px;
-}
-
-/*
-End second row
-*/
-
-/**
-Third row
-*/
-
-.ui.grid.island .row:last-child .card:first-child:hover {
-    left: -25px;
-    top: 0px;
-}
-
-.ui.grid.island .row:last-child .card:nth-child(2):hover {
-    left: 175px;
-    top: 0px;
-}
-
-.ui.grid.island .row:last-child .card:last-child:hover {
-    left: 400px;
-    top: 0px;
-}
-
-/*
-End third row
-*/
