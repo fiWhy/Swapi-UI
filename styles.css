@@ -6,24 +6,6 @@ body {
     color: white;
 }
 
-@keyframes flip {
-    from {
-        transform: rotateY(0deg);
-    }
-    to {
-        transform: rotateY(180deg);
-    }
-}
-
-@keyframes flip-back {
-    from {
-        transform: rotateY(180deg);
-    }
-    to {
-        transform: rotateY(0deg);
-    }
-}
-
 .container {
     height: 100%;
     display: flex;
@@ -41,37 +23,62 @@ body {
     padding: 0px;
     position: relative;
     height: 200px;
+    /* perspective: 800px; */
     width: 600px;
 }
 
 .ui.grid.island .row .card {
     position: relative;
     transform-style: preserve-3d;
-    animation: flip-back;
-    animation-fill-mode: both;
+    transform: rotateY(0deg);
 }
 
 .ui.grid.island .row .card.flip {
-    animation: flip;
-    animation-duration: 1s;
+    -ms-transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg)
 }
 
 .ui.grid.island .row .card .side {
     position: absolute;
+    backface-visibility: hidden;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.ui.grid.island .row .card .side>div {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui.grid.island .row .card .side>.body {
+    flex: 3;
+    font-size: 60px;
+    transition: font-size 0.5s;
+}
+
+.ui.grid.island .row .card .side>.body i {
+    display: flex;
+}
+
+.ui.grid.island .row .card:hover .side>.body {
+    color: white;
+    font-size: 85px;
+    text-align: center;
 }
 
 .ui.grid.island .row .card .front {
     z-index: 2;
-    transform: rotateY(0deg);
 }
 
 .ui.grid.island .row .card .back {
-    transform: rotateY(180deg);
+    -ms-transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 .ui.grid.island .row .card.column {
@@ -81,27 +88,27 @@ body {
     height: 200px;
     width: 200px !important;
     padding: 0px;
-    transition: box-shadow 1s, width 0.5s, height 0.5s, left 0.5s, top 0.5s;
+    transition: transform 0.5s, box-shadow 1s, width 0.5s, height 0.5s, left 0.5s, top 0.5s;
     z-index: 1;
     position: absolute;
+    font-size: 18px;
 }
 
 .ui.grid.island .row .card:hover,
-.ui.grid.island .row .card.hover {
+.ui.grid.island .row .card.hover,
+.ui.grid.island .row .card.active {
+    color: #fff;
     background-color: #FB0335 !important;
     cursor: pointer;
     width: 250px !important;
     height: 250px;
-    top: -10%;
-    left: -10%;
-}
-
-.ui.grid.island .row .card:hover {
     -webkit-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 87px -5px rgba(0, 0, 0, 0.75);
     z-index: 2;
+    font-size: 24px;
 }
+
 
 .ui.grid.island .row .card:first-child {
     left: 0;
@@ -122,17 +129,20 @@ body {
 First row
 */
 
-.ui.grid.island .row:first-child .card:first-child:hover {
+.ui.grid.island .row:first-child .card:first-child:hover,
+.ui.grid.island .row:first-child .card:first-child.active {
     left: -25px;
     top: -25px;
 }
 
-.ui.grid.island .row:first-child .card:nth-child(2):hover {
+.ui.grid.island .row:first-child .card:nth-child(2):hover,
+.ui.grid.island .row:first-child .card:nth-child(2).active {
     left: 175px;
     top: -25px;
 }
 
-.ui.grid.island .row:first-child .card:last-child:hover {
+.ui.grid.island .row:first-child .card:last-child:hover,
+.ui.grid.island .row:first-child .card:last-child.active {
     left: 375px;
     top: -25px;
 }
@@ -145,17 +155,20 @@ End first row
 Second row
 */
 
-.ui.grid.island .row:nth-child(2) .card:first-child:hover {
+.ui.grid.island .row:nth-child(2) .card:first-child:hover,
+.ui.grid.island .row:nth-child(2) .card:first-child.active {
     left: -25px;
     top: -25px;
 }
 
-.ui.grid.island .row:nth-child(2) .card:nth-child(2):hover {
+.ui.grid.island .row:nth-child(2) .card:nth-child(2):hover,
+.ui.grid.island .row:nth-child(2) .card:nth-child(2).active {
     left: 175px;
     top: -25px;
 }
 
-.ui.grid.island .row:nth-child(2) .card:last-child:hover {
+.ui.grid.island .row:nth-child(2) .card:last-child:hover,
+.ui.grid.island .row:nth-child(2) .card:last-child.active {
     left: 375px;
     top: -25px;
 }
@@ -168,17 +181,20 @@ End second row
 Third row
 */
 
-.ui.grid.island .row:last-child .card:first-child:hover {
+.ui.grid.island .row:last-child .card:first-child:hover,
+.ui.grid.island .row:last-child .card:first-child.active {
     left: -25px;
     top: -25px;
 }
 
-.ui.grid.island .row:last-child .card:nth-child(2):hover {
+.ui.grid.island .row:last-child .card:nth-child(2):hover,
+.ui.grid.island .row:last-child .card:nth-child(2).active {
     left: 175px;
     top: -25px;
 }
 
-.ui.grid.island .row:last-child .card:last-child:hover {
+.ui.grid.island .row:last-child .card:last-child:hover,
+.ui.grid.island .row:last-child .card:last-child.active {
     left: 375px;
     top: -25px;
 }

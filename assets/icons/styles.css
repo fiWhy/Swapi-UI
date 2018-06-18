@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "untitled-font-2";
+  src:url("fonts/untitled-font-2.eot");
+  src:url("fonts/untitled-font-2.eot?#iefix") format("embedded-opentype"),
+    url("fonts/untitled-font-2.woff") format("woff"),
+    url("fonts/untitled-font-2.ttf") format("truetype"),
+    url("fonts/untitled-font-2.svg#untitled-font-2") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "untitled-font-2" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "untitled-font-2" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bb-8-by-radiusss:before {
+  content: "\61";
+}
+.icon-bb-8-top-by-radiusss:before {
+  content: "\62";
+}
+.icon-blaster-by-radiusss:before {
+  content: "\63";
+}
+.icon-boba-fett-by-radiusss:before {
+  content: "\64";
+}
+.icon-btl-y-wing-by-radiusss:before {
+  content: "\65";
+}
+.icon-c3po-by-radiusss:before {
+  content: "\66";
+}
+.icon-darth-vader-by-radiusss:before {
+  content: "\67";
+}
+.icon-death-star-by-radiusss:before {
+  content: "\68";
+}
+.icon-finn-by-radiusss:before {
+  content: "\69";
+}
+.icon-geonosis-by-radiusss:before {
+  content: "\6a";
+}
+.icon-gloves-by-radiusss:before {
+  content: "\6b";
+}
+.icon-k-2so-by-radiusss:before {
+  content: "\6c";
+}
+.icon-kylo-ren-by-radiusss:before {
+  content: "\6d";
+}
+.icon-lightsaber-by-radiusss:before {
+  content: "\6e";
+}
+.icon-master-yoda-by-radiusss:before {
+  content: "\6f";
+}
+.icon-millenium-falcon-by-radiusss:before {
+  content: "\70";
+}
+.icon-miscellaneous-by-radiusss:before {
+  content: "\71";
+}
+.icon-r2d2-by-radiusss:before {
+  content: "\72";
+}
+.icon-rz-1-a-wing-by-radiusss:before {
+  content: "\73";
+}
+.icon-scout-trooper-by-radiusss:before {
+  content: "\74";
+}
+.icon-speeder-by-radiusss:before {
+  content: "\75";
+}
+.icon-storm-trooper-by-radiusss:before {
+  content: "\76";
+}
+.icon-t-65-x-wing-by-radiusss:before {
+  content: "\77";
+}
+.icon-tie-fighter-by-radiusss:before {
+  content: "\78";
+}
