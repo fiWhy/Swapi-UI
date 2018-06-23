@@ -1,46 +1,54 @@
 var wrapper = document.getElementById('wrapper');
-var api = 'https://swapi.co/api/';
-
-function initCards() {
-    return [
-        new Card('People', '<i class="icon-scout-trooper-by-radiusss"></i>', null).setLink(api + 'people/'),
-        new Card('Planets', '<i class="icon-geonosis-by-radiusss"></i>', null).setLink(api + 'planets/'),
-        new Card('Films', '<i class="icon-miscellaneous-by-radiusss"></i>', null).setLink(api + 'films/'),
-        new Card('Species', '<i class="icon-lightsaber-by-radiusss"></i>', null).setLink(api + 'species/'),
-        new Card('Vehicles', '<i class="icon-speeder-by-radiusss"></i>', null).setLink(api + 'vehicles/'),
-        new Card('Starships', '<i class="icon-tie-fighter-by-radiusss"></i>', null).setLink(api + 'starships/')
-    ];
-};
-
-function drawList(data, previousCards, island) {
-    var additional = [];
-    data.forEach(function (info, index) {
-        var title = info.title || info.name;
-        if (previousCards[index]) {
-            previousCards[index].fillOppositeSide(title).getOppositeSide().setLink(info.url);
-        } else {
-            additional.push(new Card(title, '<i class="icon-boba-fett-by-radiusss"></i>'));
-        }
-    })
-    island.removeAdditional(data.length);
-    island.drawAdditional(additional);
-}
-
-function drawInfo(data, previousCards, island) {
-    island.removeAdditional(6);
-}
 
 var island = new Island();
-var defaultCards = initCards();
 
-island.addCardsByChunks(defaultCards);
+var icons = {
+    people: 'scout-trooper-by-radiusss',
+    planets: 'geonosis-by-radiusss',
+    films: 'miscellaneous-by-radiusss',
+    species: 'lightsaber-by-radiusss',
+    vehicles: 'speeder-by-radiusss',
+    starships: 'tie-fighter-by-radiusss',
+    default: 'tie-fighter-by-radiusss'
+};
 
-Card.info.subscribe(function (data) {
-    if (data.results) {
-        drawList(data.results, defaultCards, island)
-    } else {
-        drawInfo(data, defaultCards, island);
-    }
-    island.flip();
-})
-wrapper.appendChild(island.element);
+RequestAPI.get('https://swapi.co/api/')
+    .then(function (data) {
+        var arr = [];
+        var rows = [];
+        for (var key in data) {
+            var endpoint = data[key];
+            arr.push({
+                title: key,
+                link: endpoint
+            });
+        }
+        return arr;
+
+    }).then(function (arr) {
+        var rows = [];
+        for (var i = 0; i < (arr.length / Island.chunkLanght); i++) {
+
+            var row = new Row();
+            var index = i * Island.chunkLanght;
+            var cards = arr.slice(index,
+                index + Island.chunkLanght);
+            cards.forEach(function (cardObject) {
+
+                var card = new Card();
+                card.getCurrentSide()
+                    .setTitle(cardObject.title)
+                    .setLink(cardObject.link)
+                    .setBody('<i class="icon-' + icons[cardObject.title] + '"></i>')
+                    .setFooter('Custom');
+
+                row.addCard(card);
+            })
+            rows.push(row);
+        }
+        return rows;
+    })
+    .then(function (rows) {
+        var island = new Island(rows);
+        wrapper.appendChild(island.element);
+    })
